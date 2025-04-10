@@ -9,7 +9,6 @@ import { Toaster } from "react-hot-toast";
 import Dashboard from "./Pages/Dashboard";
 import Email from "./Components/ForgetPassword/Email";
 import Otpverify from "./Components/ForgetPassword/Otpverify";
-import ChangePassword from "./Components/ForgetPassword/ChangePassword";
 import { EmailProvider } from "./Components/Context Api Store/EmailContext";
 import UploadDP from "./Components/UploadDP";
 import SingleBlog from "./Pages/SingleBlog";
