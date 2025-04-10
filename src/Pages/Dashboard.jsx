@@ -99,13 +99,13 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink className="px-5 py-3 text-sm font-medium" to="/about">
-                  About
+                <NavLink className="px-5 py-3 text-sm font-medium" to="/blogs">
+                  Blogs
                 </NavLink>
               </li>
               <li>
-                <NavLink className="px-5 py-3 text-sm font-medium" to="/blogs">
-                  Blogs
+                <NavLink className="px-5 py-3 text-sm font-medium" to="/about">
+                  About
                 </NavLink>
               </li>
               <li>

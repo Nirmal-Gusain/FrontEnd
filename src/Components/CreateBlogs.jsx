@@ -6,7 +6,8 @@ import JoditEditor from "jodit-react";
 const CreateBlogs = () => {
   const [blogImg, setBlogImg] = useState();
   const [preview, setPreview] = useState(null);
-  const [content, setContent] = useState(""); // ✅ New state for Jodit content
+  const [content, setContent] = useState("");
+  const [isUploading, setIsUploading] = useState(false);
 
   const [formData, setFormData] = useState({
     title: "",
@@ -32,6 +33,7 @@ const CreateBlogs = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsUploading(true);
 
     const Data = new FormData();
     Data.append("file", blogImg);
@@ -41,7 +43,7 @@ const CreateBlogs = () => {
 
     try {
       const imgResponse = await axios.post(
-        `http://localhost:3000/api/uploadblogimg/${userId}`,
+        `https://server-m4z2.onrender.com/api/uploadblogimg/${userId}`,
         Data
       );
       console.log(imgResponse.data.message);
@@ -49,7 +51,7 @@ const CreateBlogs = () => {
 
     try {
       const response = await axios.post(
-        `http://localhost:3000/api/createblog/${userId}`,
+        `https://server-m4z2.onrender.com/api/createblog/${userId}`,
         Data,
         { headers: { "Content-Type": "multipart/form-data" } }
       );
@@ -62,18 +64,20 @@ const CreateBlogs = () => {
         setFormData({
           title: "",
           category: "travel",
-      });
-      setContent(null)
-      setBlogImg();
-      setPreview(null);
+        });
+        setContent(""); // ✅ clear content
+        setBlogImg();
+        setPreview(null);
 
-      if (fileInputRef.current) {
-        fileInputRef.current.value = "";
-      }
+        if (fileInputRef.current) {
+          fileInputRef.current.value = "";
+        }
       }
     } catch (error) {
       console.error("Error creating blog:", error);
       toast.error("Failed to create blog.");
+    } finally {
+      setIsUploading(false); // ✅ reset uploading status
     }
   };
 
@@ -97,8 +101,9 @@ const CreateBlogs = () => {
         <button
           className="bg-[#009966] text-white px-10 py-2 text-lg rounded cursor-pointer"
           onClick={handleSubmit}
+          disabled={isUploading}
         >
-          Create
+          {isUploading ? "Uploading..." : "Create"} {/* ✅ change button text */}
         </button>
       </div>
 
@@ -140,23 +145,11 @@ const CreateBlogs = () => {
         )}
       </div>
 
-      {/* <JoditEditor
-        ref={editor}
-        value={formData.content}
-        onChange={(newContent) => {
-          setFormData((prevData) => ({
-            ...prevData,
-            content: newContent, // ✅ Directly update content in formData
-          }));
-        }}
-      /> */}
       <JoditEditor
-  ref={editor}
-  value={content} // ✅ Use this instead of formData.content
-  onChange={(newContent) => setContent(newContent)} // ✅ Track changes separately
-/>
-
-      {formData.content}
+        ref={editor}
+        value={content}
+        onChange={(newContent) => setContent(newContent)}
+      />
     </div>
   );
 };

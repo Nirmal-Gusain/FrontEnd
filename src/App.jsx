@@ -15,6 +15,9 @@ import UploadDP from "./Components/UploadDP";
 import SingleBlog from "./Pages/SingleBlog";
 import Blogs from "./Pages/Blogs";
 import EditBlog from "./Components/EditBlog";
+import Contact from "./Pages/Contact";
+import About from "./Pages/About";
+import ResetPassword from "./Components/Resetpassword";
 
 const router = createBrowserRouter([
   {
@@ -30,8 +33,20 @@ const router = createBrowserRouter([
         element: <SignUp />,
       },
       {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/resetpassword",
+        element: <ResetPassword />,
       },
       {
         path: "/mailverified",

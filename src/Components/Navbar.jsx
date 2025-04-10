@@ -20,7 +20,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex justify-between px-[209px] py-3 items-center w-full bg-purple-50 shadow-lg">
+    <div className="flex justify-between px-[209px] py-3 items-center w-full bg-purple-50 shadow-lg ">
       <h2 className="font-semibold text-3xl font-serif text-purple-500">
         Dev.O
       </h2>
@@ -30,9 +30,9 @@ const Navbar = () => {
           <ul className="flex gap-5 mr-10">
             {[
               { label: "Home", path: "/" },
-              // { label: "About", path: "/about" },
-              { label: "Blog", path: "/blogs" },
-              // { label: "Contact", path: "/contact" },
+              { label: "Blogs", path: "/blogs" },
+              { label: "About", path: "/about" },
+              { label: "Contact", path: "/contact" },
             ].map(({ label, path }) => (
               <li key={path}>
                 <NavLink
@@ -62,7 +62,7 @@ const Navbar = () => {
               Dashboard
             </NavLink>
 
-            <button onClick={handleLogout}>Logout</button>
+            <button onClick={handleLogout} className="bg-red-500 text-white px-6 py-2.5 rounded-full font-medium shadow-md hover:shadow-[0_0_20px_5px_#ffcbf2] hover:scale-105 transition-all duration-300 ease-in-out">Logout</button>
           </>
         ) : (
           <>
