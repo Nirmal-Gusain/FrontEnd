@@ -30,9 +30,9 @@ const Navbar = () => {
           <ul className="flex gap-5 mr-10">
             {[
               { label: "Home", path: "/" },
-              { label: "About", path: "/about" },
+              // { label: "About", path: "/about" },
               { label: "Blog", path: "/blogs" },
-              { label: "Contact", path: "/contact" },
+              // { label: "Contact", path: "/contact" },
             ].map(({ label, path }) => (
               <li key={path}>
                 <NavLink
