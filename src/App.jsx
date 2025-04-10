@@ -61,10 +61,6 @@ const router = createBrowserRouter([
         element: <Otpverify />,
       },
       {
-        path: "/password-change",
-        element: <ChangePassword />,
-      },
-      {
         path: "/blogs",
         element: <Blogs/>,
       },
