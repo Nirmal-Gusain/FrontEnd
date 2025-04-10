@@ -17,7 +17,7 @@ import Blogs from "./Pages/Blogs";
 import EditBlog from "./Components/EditBlog";
 import Contact from "./Pages/Contact";
 import About from "./Pages/About";
-import Resetpassword from "./Components/Resetpassword";
+import Resetpassword from "./Components/Resetpassword.jsx";
 
 const router = createBrowserRouter([
   {
