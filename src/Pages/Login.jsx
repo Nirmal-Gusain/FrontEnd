@@ -17,7 +17,7 @@ const Login = () => {
     console.log("data:", data);
 
     try {
-      const response  = await axios.post("http://localhost:3000/api/login",data)
+      const response  = await axios.post("https://server-m4z2.onrender.com/api/login",data)
       console.log(response)
       const token  = response.headers.authorization.split("Bearer ")[1]
 
