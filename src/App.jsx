@@ -14,7 +14,7 @@ import { EmailProvider } from "./Components/Context Api Store/EmailContext";
 import UploadDP from "./Components/UploadDP";
 import SingleBlog from "./Pages/SingleBlog";
 import Blogs from "./Pages/Blogs";
-import EditBlog from "./Components/Editblog";
+import EditBlog from "./Components/EditBlog";
 
 const router = createBrowserRouter([
   {
