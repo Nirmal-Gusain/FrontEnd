@@ -13,7 +13,7 @@ const Blogs = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/getallblogs");
+        const response = await axios.get("https://server-m4z2.onrender.com/api/getallblogs");
         if (Array.isArray(response.data.blogs)) {
           setBlogs(response.data.blogs);
           setFilteredBlogs(response.data.blogs);
