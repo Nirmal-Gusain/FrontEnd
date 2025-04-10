@@ -63,7 +63,7 @@ const SignUp = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:3000/api/signup", data);
+      const response = await axios.post("https://server-m4z2.onrender.com/api/signup", data);
       toast.success(response.data.message);
       reset();
       navigate("/login");
