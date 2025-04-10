@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-const ResetPassword = () => {
+const Resetpassword = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -95,4 +95,4 @@ const ResetPassword = () => {
   );
 };
 
-export default ResetPassword;
+export default Resetpassword;

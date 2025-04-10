@@ -17,7 +17,7 @@ import Blogs from "./Pages/Blogs";
 import EditBlog from "./Components/EditBlog";
 import Contact from "./Pages/Contact";
 import About from "./Pages/About";
-import ResetPassword from "./Components/Resetpassword";
+import Resetpassword from "./Components/Resetpassword";
 
 const router = createBrowserRouter([
   {
@@ -46,7 +46,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/resetpassword",
-        element: <ResetPassword />,
+        element: <Resetpassword />,
       },
       {
         path: "/mailverified",
