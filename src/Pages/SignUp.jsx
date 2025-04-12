@@ -7,60 +7,27 @@ import toast from "react-hot-toast";
 const SignUp = () => {
   const navigate = useNavigate();
 
-  const {
-    register,
-    handleSubmit,
-    reset
-  } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = async (data) => {
-    // Manual validations
-    if (!data.name.trim()) {
-      toast.error("Name is required");
-      return;
-    }
-
-    if (!data.email.trim()) {
-      toast.error("Email is required");
-      return;
-    }
+    if (!data.name.trim()) return toast.error("Name is required");
+    if (!data.email.trim()) return toast.error("Email is required");
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(data.email)) {
-      toast.error("Invalid email format");
-      return;
-    }
+    if (!emailRegex.test(data.email)) return toast.error("Invalid email format");
 
-    if (!data.phone.trim()) {
-      toast.error("Phone number is required");
-      return;
-    }
+    if (!data.phone.trim()) return toast.error("Phone number is required");
+    if (!/^\d{10}$/.test(data.phone)) return toast.error("Phone number must be exactly 10 digits");
 
-    if (!/^\d{10}$/.test(data.phone)) {
-      toast.error("Phone number must be exactly 10 digits");
-      return;
-    }
-
-    if (!data.password.trim()) {
-      toast.error("Password is required");
-      return;
-    }
-
-    if (data.password.length < 6) {
-      toast.error("Password must be at least 6 characters");
-      return;
-    }
+    if (!data.password.trim()) return toast.error("Password is required");
+    if (data.password.length < 6) return toast.error("Password must be at least 6 characters");
 
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])/;
     if (!passwordRegex.test(data.password)) {
-      toast.error("Password must include uppercase, lowercase, number, and special character");
-      return;
+      return toast.error("Password must include uppercase, lowercase, number, and special character");
     }
 
-    if (!data.category) {
-      toast.error("Please select a category");
-      return;
-    }
+    if (!data.category) return toast.error("Please select a category");
 
     try {
       const response = await axios.post("https://server-m4z2.onrender.com/api/signup", data);
@@ -74,65 +41,56 @@ const SignUp = () => {
   };
 
   return (
-    <div className="bg-purple-50 w-full h-[90vh] flex items-center justify-center relative">
-      <img
-        src="ren-ran-bBiuSdck8tU-unsplash 1.jpg"
-        className="w-full h-full md:w-[1100px] md:h-[600px] object-cover shadow-2xl shadow-black rounded-[50px]"
-        alt=""
-      />
-      <div className="absolute w-[500px] bg-white/10 left-[270px] rounded-4xl backdrop-blur-[10px] border border-white shadow-2xl shadow-black text-white p-3">
-        <h2 className="text-[40px] text-center font-medium">Get Started</h2>
-        <p className="text-center text-sm font-medium">
+    <div className="bg-gradient-to-br from-purple-300 via-purple-500 to-purple-700 w-full min-h-screen flex items-center justify-center p-4">
+      <div className="w-full max-w-md md:max-w-xl bg-white/20 rounded-2xl backdrop-blur-[10px] border border-white shadow-2xl p-6 sm:p-8">
+        <h2 className="text-3xl sm:text-3xl font-semibold text-center text-black">Get Started</h2>
+        <p className="text-center text-sm font-normal text-black mt-1">
           Already have an account?{" "}
-          <Link to="/login" className="text-[#a1ffc7]">Log in</Link>
+          <Link to="/login" className="text-[#a1ffc7] hover:underline">Log in</Link>
         </p>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5 mt-5">
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4 mt-6">
           <div className="flex flex-col">
-            <label htmlFor="name" className="text-sm font-medium">Name</label>
+            <label htmlFor="name" className="text-sm font-medium text-black">Name</label>
             <input
-              className="border-b-2 text-[17px] py-1 outline-none text-emerald-100 border-b-white bg-transparent"
+              className="border-b-2 text-base py-1 outline-none text-black bg-transparent border-b-white"
               type="text"
               id="name"
-              placeholder=""
               {...register("name")}
             />
           </div>
           <div className="flex flex-col">
-            <label htmlFor="email" className="text-sm font-medium">Email</label>
+            <label htmlFor="email" className="text-sm font-medium text-black">Email</label>
             <input
-              className="border-b-2 text-[17px] py-1 outline-none text-emerald-100 border-b-white"
+              className="border-b-2 text-base py-1 outline-none text-black bg-transparent border-b-white"
               type="email"
               id="email"
-              placeholder=""
               {...register("email")}
             />
           </div>
           <div className="flex flex-col">
-            <label htmlFor="phone" className="text-sm font-medium">Phone Number</label>
+            <label htmlFor="phone" className="text-sm font-medium text-black">Phone Number</label>
             <input
-              className="border-b-2 text-[17px] py-1 outline-none text-emerald-100 border-b-white"
+              className="border-b-2 text-base py-1 outline-none text-black bg-transparent border-b-white"
               type="tel"
               id="phone"
-              placeholder=""
               {...register("phone")}
             />
           </div>
           <div className="flex flex-col">
-            <label htmlFor="password" className="text-sm font-medium">Password</label>
+            <label htmlFor="password" className="text-sm font-medium text-black">Password</label>
             <input
-              className="border-b-2 text-[17px] py-1 outline-none text-emerald-100 border-b-white"
+              className="border-b-2 text-base py-1 outline-none text-black bg-transparent border-b-white"
               type="password"
               id="password"
-              placeholder=""
               {...register("password")}
             />
           </div>
-          <div className="flex flex-col gap-2">
-            <label htmlFor="category" className="text-sm font-medium">Category</label>
+          <div className="flex flex-col">
+            <label htmlFor="category" className="text-sm font-medium text-black">Category</label>
             <select
               id="category"
-              className="text-white border-white border px-5 py-2 rounded-lg bg-transparent"
+              className="text-white border border-white px-4 py-2 rounded-lg bg-transparent"
               {...register("category")}
             >
               <option className="bg-black" value="">Select Category</option>
@@ -145,7 +103,7 @@ const SignUp = () => {
           </div>
           <input
             type="submit"
-            className="bg-[#66e79a] shadow-lg text-[#1d3f2b] font-medium rounded cursor-pointer py-2"
+            className="bg-[#66e79a] shadow-lg text-[#1d3f2b] font-medium rounded cursor-pointer py-2 hover:bg-[#57d68b] transition"
             value="Sign Up"
           />
         </form>
