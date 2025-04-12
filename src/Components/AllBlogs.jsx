@@ -15,7 +15,7 @@ const AllBlogs = () => {
     const fetchBlogData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/getuserdata/${userId}`,
+          `https://server-m4z2.onrender.com/api/getuserdata/${userId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
