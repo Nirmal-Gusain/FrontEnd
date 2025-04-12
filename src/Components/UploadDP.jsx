@@ -35,7 +35,7 @@ const UploadDP = () => {
     try {
       setLoading(true)
       const response = await axios.post(
-        `http://localhost:3000/api/upload/${id}`,
+        `https://server-m4z2.onrender.com/api/upload/${id}`,
         formData
       );
       console.log(response.data.message);

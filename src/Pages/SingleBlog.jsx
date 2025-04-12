@@ -13,7 +13,7 @@ const SingleBlog = () => {
   useEffect(() => {
     const fetchBlog = async () => {
         try {
-            const response = await axios.get(`http://localhost:3000/api/singleblog/${id}`);
+            const response = await axios.get(`https://server-m4z2.onrender.com/api/singleblog/${id}`);
             setBlog(response.data);
             setComments(response.data.comments || []); // ✅ Ensure we use "comments"
         } catch (error) {
@@ -34,7 +34,7 @@ const SingleBlog = () => {
 
     try {
         const response = await axios.post(
-            `http://localhost:3000/api/addcomments/${userId}/${id}`,
+            `https://server-m4z2.onrender.com/api/addcomments/${userId}/${id}`,
             { comment },
             {
                 headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
@@ -43,7 +43,7 @@ const SingleBlog = () => {
 
         if (response.status === 201) {
             // ✅ Fetch latest comments after successful addition
-            const updatedBlog = await axios.get(`http://localhost:3000/api/singleblog/${id}`);
+            const updatedBlog = await axios.get(`https://server-m4z2.onrender.com/api/singleblog/${id}`);
             setComments(updatedBlog.data.comments); // ✅ Ensure it updates
             setComment(""); 
         }

@@ -20,7 +20,7 @@ const Dashboard = () => {
     const fetchProfilePic = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/profilepic/${userId}`
+          `https://server-m4z2.onrender.com/api/profilepic/${userId}`
         );
         console.log(response.data);
         setProfilePic(response.data.profilePic);

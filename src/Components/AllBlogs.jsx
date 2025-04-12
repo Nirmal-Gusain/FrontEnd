@@ -35,7 +35,7 @@ const AllBlogs = () => {
   const deleteBlog = async (blogId) => {
     try {
       const response = await axios.delete(
-        `http://localhost:3000/api/deleteblog/${blogId}`
+        `https://server-m4z2.onrender.com/api/deleteblog/${blogId}`
       );
 
       if (response.status === 200) {

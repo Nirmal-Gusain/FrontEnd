@@ -23,7 +23,7 @@ const EditBlog = () => {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/singleblog/${id}`);
+        const response = await axios.get(`https://server-m4z2.onrender.com/api/singleblog/${id}`);
         const blogData = response.data;
 
         setFormData({
@@ -68,7 +68,7 @@ const EditBlog = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:3000/api/updateblog/${id}`,
+        `https://server-m4z2.onrender.com/api/updateblog/${id}`,
         Data,
         { headers: { "Content-Type": "multipart/form-data" } }
       );

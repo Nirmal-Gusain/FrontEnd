@@ -12,7 +12,7 @@ const Email = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:3000/api/send-otp", {
+      const response = await axios.post("https://server-m4z2.onrender.com/api/send-otp", {
         email,
       });
       console.log(response.data);

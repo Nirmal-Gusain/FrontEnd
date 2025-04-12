@@ -14,7 +14,7 @@ const Otpverify = () => {
         e.preventDefault()
 
         try {
-            const response = await axios.post("http://localhost:3000/api/verify-otp",{email,otp})
+            const response = await axios.post("https://server-m4z2.onrender.com/api/verify-otp",{email,otp})
             if(response.status === 200){
                 toast.success("OTP verified successfully")
                 navigate("/password-change")
