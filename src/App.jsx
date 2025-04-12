@@ -63,6 +63,10 @@ const router = createBrowserRouter([
         path: "/blogs",
         element: <Blogs/>,
       },
+      {
+        path: "/readblog/:id",
+        element: <SingleBlog />,
+      },
     ],
   },
   {
@@ -73,10 +77,7 @@ const router = createBrowserRouter([
     path: "/upload",
     element: <UploadDP />,
   },
-  {
-    path: "/readblog/:id",
-    element: <SingleBlog />,
-  },
+
   {
     path: "/editblog/:id",
     element: <EditBlog />,

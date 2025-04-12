@@ -128,7 +128,7 @@ const Dashboard = () => {
                   alt="Profile Picture"
                 />
               ) : (
-                <FaUserCircle className="text-3xl text-gray-600 cursor-pointer" />
+                <FaUserCircle className="text-3xl w-12 h-12 text-gray-600 cursor-pointer" />
               )}
             </div>
           </div>
